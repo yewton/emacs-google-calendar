@@ -95,7 +95,7 @@ If you use curl, set it to \"curl --silent -o '%s' '%s'\"."
                  (format google-calendar-retrieval-program
                          (expand-file-name ical-file)
                          google-calendar-url)))
-            (if (= 0 (shell-command retrieve-command))
+            (if (/= 0 (shell-command retrieve-command))
                 (signal 'error (format "Failed to retrieve ical: %s" retrieve-command)))
             )
           (icalendar-import-file ical-file gcal-diary-file)
